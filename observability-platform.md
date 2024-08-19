@@ -18,4 +18,4 @@ One approach to deploy alerting rules and dashboard could be to use configMaps, 
 
 ## Architecture
 
-![Observability Platform](./observability-platform.drawio.png)
+![Observability Platform](./observability-platform.jpg)
