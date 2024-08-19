@@ -27,11 +27,6 @@ memory:
 configData: |
   # Configuration Data
 
-# External Persistent Storage settings
-storage:
-  required: false
-  storageSpace: 1Gi
-  folderMountPath: /bin/files/processor
 
 # Horizontal Pod Autoscaler settings
 hpa:
