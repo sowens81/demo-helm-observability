@@ -1,0 +1,32 @@
+# Ignore editor backup files
+*~
+
+# Ignore all files and directories starting with . or _
+.*
+_*
+
+# Ignore Helm package files
+*.tgz
+*.tar.gz
+
+# Ignore version control files
+.git/
+.svn/
+.hg/
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE-specific files and directories
+.idea/
+.vscode/
+
+# Ignore temporary files and build artifacts
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Ignore node_modules directory (if using Node.js)
+node_modules/
