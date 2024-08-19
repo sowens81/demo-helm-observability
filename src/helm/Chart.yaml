@@ -1,0 +1,4 @@
+apiVersion: v2
+name: nginx-service
+description: A Helm chart that will deploy an Nginx service to k8s
+version: 1.0.1

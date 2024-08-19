@@ -1,0 +1,41 @@
+# Default values for nginx-service.
+
+# Product and team labels
+productName: location-service
+team: dev-team
+
+# Image settings
+image:
+  tag: latest
+
+# NGINX deployment settings
+replicaCount: 2
+
+# Node label for scheduling
+nodeLabel: dev_team
+nodeLabelValue: circle
+
+# Resource requests and limits
+cpu:
+  request: "250m"
+  limit: "500m"
+memory:
+  request: "256Mi"
+  limit: "512Mi"
+
+# ConfigMap data
+configData: |
+  # Configuration Data
+
+# External Persistent Storage settings
+storage:
+  required: false
+  storageSpace: 1Gi
+  folderMountPath: /bin/files/processor
+
+# Horizontal Pod Autoscaler settings
+hpa:
+  minReplicas: 1
+  maxReplicas: 3
+  cpuUtilization: 80
+  stabilizationWindowSeconds: 600

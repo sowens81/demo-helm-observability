@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "nginx-service.deploymentName" . }}
+  labels:
+    app: {{ .Values.productName }}
+    team: {{ .Values.team }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.productName }}
+      team: {{ .Values.team }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.productName }}
+        team: {{ .Values.team }}
+    spec:
+      containers:
+      - name: nginx
+        image: "nginx:{{ .Values.image.tag }}"
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: config-volume
+          mountPath: "/etc/{{ .Values.productName }}/config.txt"
+          subPath: config.txt
+        resources:
+          requests:
+            memory: {{ .Values.memory.request }}
+            cpu: {{ .Values.cpu.request }}
+          limits:
+            memory: {{ .Values.memory.limit }}
+            cpu: {{ .Values.cpu.limit }}
+      volumes:
+      - name: config-volume
+        configMap:
+          name: {{ include "nginx-service.configmapName" . }}
+      nodeSelector:
+        {{ .Values.nodeLabel }}: {{ .Values.nodeLabelValue }}
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - {{ .Values.productName }}
+            topologyKey: kubernetes.io/hostname
