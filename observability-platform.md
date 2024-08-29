@@ -10,7 +10,7 @@ The following diagram is a high level example of running the Observability Platf
 - alertmanager
 - Azure Storage Account
 
-Prometheus is integrated with Thanos, to enable log term storage of metrics in an object storage (Azure Storage Account). Grafana is used to visualize the metrics stored in the object storage bucket. Alertmanager is used to send alerts to teams, pipelines, etc using webhooks.
+Prometheus is integrated with Thanos to enable long term storage of metrics in an object storage solution (Azure Storage Account). Grafana is used to visualize the metrics stored in the object storage account. AlertManager is used to send alerts to teams, pipelines, etc using webhooks.
 
 An approach to deploy the Observability Platform in a Kubernetes cluster is to use Helm charts.
 
